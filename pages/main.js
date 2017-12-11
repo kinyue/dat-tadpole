@@ -41,6 +41,7 @@ function mainView (state, emit) {
 
   document.title = 'Dat Desktop'
 
+
   if(showLoginScreen) {
     console.log('displaying login page')
     return html`
@@ -48,7 +49,7 @@ function mainView (state, emit) {
       ${sprite.render()}
       ${header.render(headerProps)}
       ${login.render({onlogin: () => {
-        console.log('you are login now')
+        emit('login:verified')
       }})}
       ${statusBar.render(state.dats.speed)}
     </div>

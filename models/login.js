@@ -4,9 +4,12 @@ var xtend = Object.assign
 module.exports = loginModel
 
 function loginModel (state, bus) {
-    state.login = xtend({
+    
+    var update = bus.emit.bind(bus, 'show')
+
+    state.login = xtend({}, state.login, {
         show: true
-    }, state.login)
+      })
 
     bus.on('login:toverify', function() {
         state.login.show = true
