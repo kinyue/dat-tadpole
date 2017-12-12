@@ -39,22 +39,22 @@ function mainView (state, emit) {
     onreport: () => shell.openExternal('https://github.com/datproject/dat-desktop/issues')
   }
 
-  document.title = 'Dat Desktop'
+  document.title = 'Dat Tadpole'
 
 
-  if(showLoginScreen) {
-    console.log('displaying login page')
-    return html`
-    <div>
-      ${sprite.render()}
-      ${header.render(headerProps)}
-      ${login.render({onlogin: () => {
-        emit('login:verified')
-      }})}
-      ${statusBar.render(state.dats.speed)}
-    </div>
-  `
-  }
+  // if(showLoginScreen) {
+  //   console.log('displaying login page')
+  //   return html`
+  //   <div>
+  //     ${sprite.render()}
+  //     ${header.render(headerProps)}
+  //     ${login.render({onlogin: () => {
+  //       emit('login:verified')
+  //     }})}
+  //     ${statusBar.render(state.dats.speed)}
+  //   </div>
+  // `
+  // }
 
   if (showDownloadScreen) {
     return html`
@@ -89,7 +89,7 @@ function mainView (state, emit) {
   }
 
   if (showIntroScreen) {
-    document.title = 'Dat Desktop | Welcome'
+    document.title = 'Dat Tadpole | Welcome'
     return html`
       <div>
         ${sprite.render()}

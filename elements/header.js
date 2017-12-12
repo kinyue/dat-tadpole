@@ -49,6 +49,7 @@ function HeaderElement () {
       showMenu = this.state.showMenu = willShowMenu
       this.state.willShowMenu = null
     }
+    
 
     assert.equal(typeof isReady, 'boolean', 'elements/header: isReady should be type boolean')
     assert.equal(typeof onimport, 'function', 'elements/header: onimport should be type function')
@@ -98,6 +99,9 @@ function HeaderElement () {
 
     return html`
       <header class="${header}">
+        <div style="position: relative;">
+          <img src="./assets/logo.png" style="position: absolute; max-height: 2.0rem; margin-left: 2px;">
+        </div>
         <div class="fr relative">
           ${importButton.render({
             onsubmit: onimport
@@ -107,16 +111,15 @@ function HeaderElement () {
           ${menuButton}
           ${showMenu
             ? html`
-            <div class="absolute right-0 w5 pa3 bg-neutral">
-              <h3 class="f6 f5-l mb2">
-                Dat Desktop ${version}
-              </h3>
-              <p class="f6 f5-l mb3">
-                Dat Desktop is a peer to peer sharing app built for humans by humans.
-              </p>
-              <p class="f6 f5-l">
-                <a onclick=${onreport} href="#" class="color-neutral-50  hover-color-neutral-70">Report Bug</a>
-              </p>
+            <div class="absolute right-0 w5 pa3 bg-white">
+            <h3 class="f6 f5-l mb2" style="color:black">
+              Dat Tadpole
+            </h3>
+            <div class="relative right-10 bg-neutral">
+                <p class="f6 f5-l mb3" style="color:black">
+                  Contact List
+                </p>
+              </div>
             </div>
               `
             : ''}

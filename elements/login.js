@@ -6,6 +6,8 @@ var microcomponent = require('microcomponent')
 
 var button = require('./button')
 
+var usernameValue = ''
+
 var loginpage = css`
     :host {
         position: absolute;
@@ -39,17 +41,17 @@ function LoginScreen () {
     })
     component.on('render', render)
     component.on('update', update)
-    component.on('show', show)
     return component
 
     function render () {
         var { onlogin } = this.props
+        
         component.state.login = true
         return html`
             <main class="${loginpage}">
                 <img src="./assets/table-skeleton.svg" alt="" class="${loginpage}">
                 <div class="tutorial">
-                    <input name="username" type="text" placeholder="Username">
+                    <input name="username" type="text" placeholder="username" value="${usernameValue}" onchange="${changeUserName}">
                     <input name="password" type="text" placeholder="password">
                     <div>
                         ${button.green('Login', {
@@ -61,23 +63,9 @@ function LoginScreen () {
         `
     }
 
-    function show () {
-        var { onlogin } = this.props
-        component.state.login = true
-        return html`
-            <main class="${loginpage}">
-                <img src="./assets/table-skeleton.svg" alt="" class="${loginpage}">
-                <div class="tutorial">
-                    <input name="username" type="text" placeholder="Username">
-                    <input name="password" type="text" placeholder="password">
-                    <div>
-                        ${button.green('Login', {
-                            onclick: onlogin
-                        })}
-                    </div>
-                </div>
-            </main>
-        `
+    function changeUserName(e){
+        console.log('in change user name method')
+        usernameValue = e.target.value
     }
 
     function update (props) {
